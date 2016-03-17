@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	 
+	<package name="platform-default" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			<result name="json">/test/json.jsp</result>
+		</global-results>
+	</package>
+	
+	<package name="entity.test" extends="platform-default" namespace="/entity/test">
+		<action name="test_*" method="{1}" class="testAction">
+			<result name="success">/success.jsp</result>
+		</action>
+	</package>
+</struts>
